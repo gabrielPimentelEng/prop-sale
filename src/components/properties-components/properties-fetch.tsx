@@ -33,6 +33,31 @@ interface Offer {
   gap: 1rem;
   margin-bottom: 2rem;
 `;
+// const PropertiesGrid = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(6, 1fr);
+//   grid-template-rows: repeat(2, 1fr);
+//   gap: 1rem;
+//   margin-bottom: 2rem;
+//   overflow-y: auto; /* Enable vertical scrolling if content overflows */
+
+//   & > :nth-child(3),
+//   & > :nth-child(4),
+//   & > :nth-child(5) {
+//     grid-column: span 2;
+//   }
+
+//   & > :nth-child(1) {
+//     grid-column-start: 2;
+//     grid-column-end: span 2;
+//   }
+
+//   & > :nth-child(2) {
+//     grid-column: span 1;
+//     grid-column-start: 4;
+//     grid-column-end: span 2;
+//   }
+// `;
 
 
   const PaginationContainer = styled.div`

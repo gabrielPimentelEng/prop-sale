@@ -54,7 +54,7 @@ export default function HeaderAuth() {
           {session?.user?.name?.charAt(0) || ''}
         </Avatar>
         <UserName onClick={handleClick}>
-          {session?.user ? `Welcome, ${session.user.name}` : 'Entrar'}
+          {session?.user ? `Bem vindo, ${session.user.name}` : 'Entrar'}
         </UserName>
 
         {/* Popover */}
@@ -72,14 +72,13 @@ export default function HeaderAuth() {
           <div style={{ padding: '16px' }}>
             {session?.user ? (
               <div>
-                <Typography>Signed in as {session.user.name}</Typography>
                 <Button variant="contained" color="primary" onClick={() => signOut()}>
-                  Sign Out
+                  Sair
                 </Button>
               </div>
             ) : (
               <Button variant="contained" color="primary" onClick={() => signIn('github')}>
-                Sign In with GitHub
+                Entrar com Github
               </Button>
             )}
           </div>

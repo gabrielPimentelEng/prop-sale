@@ -44,7 +44,7 @@ export default function ContactPage({ params }: { params: { propertyId: string }
 
       if (response.status >= 200 && response.status <= 299) {
         setIsSubmitted(true);
-        setSuccessMessage('Offer sent successfully! You will be redirected shortly...');
+        setSuccessMessage('Oferta enviada! Você será redirecionado em alguns segundos...');
         setTimeout(() => {
           router.push('/');
         }, 5000); // Redirect after 5 seconds
