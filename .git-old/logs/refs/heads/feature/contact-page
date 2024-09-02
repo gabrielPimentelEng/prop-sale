@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 d6230052f1257396e94b1bb621fb36e46ade7f26 gaku <gabrielpimenteleng@hotmail.com> 1724715931 -0300	branch: Created from HEAD
+d6230052f1257396e94b1bb621fb36e46ade7f26 12605152d0534db9f6bd3a4e5ed0d25e9a3dfcd7 gaku <gabrielpimenteleng@hotmail.com> 1724716082 -0300	commit: Added contacts page that receive a propertyId from clicking make an offer from home page by parameter to create a new offer with input provided by the user
+12605152d0534db9f6bd3a4e5ed0d25e9a3dfcd7 e641661477038db89ab9c3a36f29d0aadde528cf gaku <gabrielpimenteleng@hotmail.com> 1724798144 -0300	commit: Added some style to contact page, and basic form validation with zod

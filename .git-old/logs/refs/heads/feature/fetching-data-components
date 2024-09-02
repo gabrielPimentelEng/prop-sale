@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 4cec9b06e8697b08fbcbe5aa1656de113a82c19a gaku <gabrielpimenteleng@hotmail.com> 1724355570 -0300	branch: Created from HEAD
+4cec9b06e8697b08fbcbe5aa1656de113a82c19a d6230052f1257396e94b1bb621fb36e46ade7f26 gaku <gabrielpimenteleng@hotmail.com> 1724447030 -0300	commit: Added properties-fetch and properties-card components to present data fetched on the server
