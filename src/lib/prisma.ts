@@ -3,16 +3,6 @@ import { PrismaClient, Property, Offer } from '@prisma/client';
 const prisma = new PrismaClient();
 
 
-// export async function getAllProperties(sortOrder: 'asc' | 'desc' = 'asc') {
-//   return prisma.property.findMany({
-//     include: {
-//       offers: true,
-//     },
-//     orderBy: {
-//       price: sortOrder,
-//     },
-//   });
-// }
 interface GetAllPropertiesParams {
   sortOrder?: 'asc' | 'desc';
   page?: number;
@@ -108,3 +98,29 @@ export async function addOffer(data: {
       throw error;
     }
   }
+
+export async function deleteProperty(id: number) {
+  try {
+    const deletedProperty = await prisma.property.delete({
+      where: { id },
+    });
+    return deletedProperty;
+  } catch (error) {
+    console.error('Error deleting property:', error);
+    throw error;
+  }
+}
+
+
+export async function updateProperty(id: number, updates: Partial<{ image: string; price: number; description: string; characteristics: string[] }>) {
+  try {
+    const updatedProperty = await prisma.property.update({
+      where: { id },
+      data: updates,
+    });
+    return updatedProperty;
+  } catch (error) {
+    console.error('Error updating property:', error);
+    throw error;
+  }
+}

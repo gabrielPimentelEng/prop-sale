@@ -29,7 +29,7 @@ const Main_Container = styled.div`
 display: flex;
 justify-content: space-between;
 padding: 1rem;
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     flex-direction: column;
   }
 `

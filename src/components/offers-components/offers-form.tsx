@@ -11,7 +11,7 @@ interface OffersFormProps {
   register: UseFormRegister<any>;
   errors: FieldErrors;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  successMessage?: string; // Add successMessage as a prop
+  successMessage?: string; 
 }
 
 // Styled Components

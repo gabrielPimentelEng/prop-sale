@@ -61,8 +61,17 @@ interface Offer {
   align-items: center;
   margin: 0 0 2rem 0;
   `;
-  const Typography_Details = styled(Typography)`
+  // const Typography_Details = styled(Typography)`
+  // margin-top:1rem;
+  // `;
+   const Typography_Details = styled(Typography)`
   margin-top:1rem;
+  display:flex;
+  justify-content:center;
+  `;
+  const Typography_Details_Items_Container = styled(Typography)`
+  display:flex;
+  justify-content:center;
   `;
 
   const Typography_Property_Text = styled(Typography)`
@@ -122,21 +131,10 @@ interface Offer {
                         <Typography_Property_Text variant="body1" color="text.secondary">
                             {property.description }
                         </Typography_Property_Text>
-                        <Details_Div>
                             <Typography_Details gutterBottom variant="subtitle1" >
                                 Detalhes 
                             </Typography_Details>
-                            <ExpandMore
-                            expand={expanded}
-                            onClick={handleExpandClick}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                            >
-                                <ExpandMoreIcon/>
-                            </ExpandMore>
-                        </Details_Div>
-                        <Collapse in={expanded} timeout="auto" unmountOnExit>
-                            <Typography variant="body2" color="text.secondary" component="div">
+                            <Typography_Details_Items_Container variant="body2" color="text.secondary" >
                                 {property.characteristics.length > 0 && (
                                     <List>      
                                     {property.characteristics.map((characteristic) => (
@@ -146,8 +144,8 @@ interface Offer {
                                     ))}
                                 </List>
                                 )}
-                            </Typography>
-                        </Collapse>
+                            </Typography_Details_Items_Container>
+                        {/* </Collapse> */}
                         <Container_Property_Price>
                           <Typography_Property_Price variant="body1" color="text.secondary">
                               R$: {property.price}
