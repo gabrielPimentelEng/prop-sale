@@ -1,7 +1,31 @@
 'use client';
-import { Avatar, Popover, Button, Typography } from "@mui/material"
+import { Avatar, Popover, Button, Typography } from "@mui/material";
 import * as React from 'react';
 import { useSession, signIn, signOut } from "next-auth/react";
+import styled from 'styled-components';
+
+
+const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 1rem;
+`;
+
+const LeftContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const UserName = styled(Typography)`
+  margin-left: 0.5rem;
+  cursor: pointer;
+
+  &:hover{
+    text-decoration: underline;
+    color: #0070f3;
+  }
+`;
 
 export default function HeaderAuth() {
   const { data: session } = useSession(); // Get session data from next-auth
@@ -19,21 +43,19 @@ export default function HeaderAuth() {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div className="flex justify-between border px-2 py-2">
-      <div className="flex justify-start items-center">
+    <HeaderContainer>
+      <LeftContainer>
         {/* Avatar and Popover Trigger */}
         <Avatar
-          
           src={session?.user?.image || ''} // Safely handle session image
           alt={session?.user?.name || 'Profile'}
-          
         >
           {/* Fallback to first letter of the user's name, or default image */}
           {session?.user?.name?.charAt(0) || ''}
         </Avatar>
-        <Typography sx={{ ml: 2 }} onClick={handleClick} className="cursor-pointer">
-          {session?.user ? `Welcome, ${session.user.name}` : 'Log in'}
-        </Typography>
+        <UserName onClick={handleClick}>
+          {session?.user ? `Welcome, ${session.user.name}` : 'Entrar'}
+        </UserName>
 
         {/* Popover */}
         <Popover
@@ -45,7 +67,8 @@ export default function HeaderAuth() {
             vertical: 'bottom',
             horizontal: 'left',
           }}
-        > {/* If current logged in, show option to log out and vice versa */}
+        >
+          {/* If currently logged in, show option to log out and vice versa */}
           <div style={{ padding: '16px' }}>
             {session?.user ? (
               <div>
@@ -61,7 +84,7 @@ export default function HeaderAuth() {
             )}
           </div>
         </Popover>
-      </div>
-    </div>
+      </LeftContainer>
+    </HeaderContainer>
   );
 }

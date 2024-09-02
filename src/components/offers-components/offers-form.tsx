@@ -11,6 +11,7 @@ interface OffersFormProps {
   register: UseFormRegister<any>;
   errors: FieldErrors;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  successMessage?: string; // Add successMessage as a prop
 }
 
 // Styled Components
@@ -60,11 +61,17 @@ const FormTitle = styled.h2`
   font-weight: bold;
 `;
 
+const SuccessMessage = styled(Typography)`
+  color: green;
+  text-align: center;
+  margin-top: 1rem;
+`;
 
 export default function Offers_Form({
   register,
   errors,
   onSubmit,
+  successMessage, // Accept successMessage as a prop
 }: OffersFormProps) {
   const { data: session } = useSession();
 
@@ -130,6 +137,11 @@ export default function Offers_Form({
               <StyledButton type="submit" variant="contained">
                 Enviar
               </StyledButton>
+              {successMessage && (
+                <SuccessMessage variant="body2">
+                  {successMessage}
+                </SuccessMessage>
+              )}
             </Styled_Container>
           </Box>
         </FormContainer>

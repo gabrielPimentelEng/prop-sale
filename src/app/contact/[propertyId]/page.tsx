@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';  // Import useRouter from next/navigation
 import Offers_Form from '@/components/offers-components/offers-form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,6 +26,9 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function ContactPage({ params }: { params: { propertyId: string } }) {
+  const router = useRouter();  // Use useRouter from next/navigation
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | undefined>(undefined);
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
@@ -39,14 +43,16 @@ export default function ContactPage({ params }: { params: { propertyId: string }
       const response = await axios.post('/api/offers/create', offer);
 
       if (response.status >= 200 && response.status <= 299) {
-        alert('Offer sent successfully!');
+        setIsSubmitted(true);
+        setSuccessMessage('Offer sent successfully! You will be redirected shortly...');
+        setTimeout(() => {
+          router.push('/');
+        }, 5000); // Redirect after 5 seconds
       } else {
         console.error('Failed to send the offer');
-        alert('Failed to send the offer');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred while sending the offer');
     }
   };
 
@@ -55,6 +61,7 @@ export default function ContactPage({ params }: { params: { propertyId: string }
       register={register}
       errors={errors}
       onSubmit={handleSubmit(onSubmit)}
+      successMessage={successMessage} // Pass the success message
     />
   );
 }
